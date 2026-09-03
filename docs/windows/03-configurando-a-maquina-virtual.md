@@ -388,5 +388,5 @@ Com a máquina virtual criada e configurada, o próximo procedimento será inici
 O procedimento será documentado em:
 
 ```text
-docs/windows/04-configurando-a-rede.md
+docs/windows/04-instalando-o-debian.md
 ```
