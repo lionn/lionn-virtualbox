@@ -10,7 +10,7 @@ A configuração apresentada serve como base para um ambiente de estudos de Linu
 
 ## Objetivo
 
-Ao final deste procedimento teremos uma máquina virtual criada no Oracle VirtualBox, preparada para receber a instalação do Debian.
+Ao final deste procedimento, teremos uma máquina virtual criada no Oracle VirtualBox e preparada para receber a instalação do Debian.
 
 A estrutura do ambiente será:
 
@@ -61,6 +61,8 @@ Exemplo:
 ```text
 C:\Users\usuario\Downloads\debian.iso
 ```
+
+O nome do arquivo poderá variar de acordo com a versão e a imagem do Debian utilizada.
 
 ## Criando a máquina virtual
 
@@ -123,7 +125,7 @@ Essa configuração pode ser alterada posteriormente de acordo com os recursos d
 
 ## Configurando os processadores
 
-O VirtualBox também permite definir quantos processadores virtuais serão disponibilizados para a máquina.
+O VirtualBox permite definir quantos processadores virtuais serão disponibilizados para a máquina.
 
 Para este laboratório será utilizado:
 
@@ -131,7 +133,7 @@ Para este laboratório será utilizado:
 Processadores: 2
 ```
 
-Assim como a memória, essa configuração pode ser alterada posteriormente.
+Assim como a memória, essa configuração pode ser alterada posteriormente de acordo com os recursos disponíveis no computador físico.
 
 ## Criando o disco virtual
 
@@ -237,6 +239,12 @@ A instalação do sistema operacional será realizada na próxima etapa da docum
 | Disco virtual       | 20 GB        |
 | Rede                | NAT          |
 
+A configuração de rede apresentada na tabela representa a configuração inicial utilizada neste laboratório. A configuração e os testes de rede serão abordados posteriormente no documento:
+
+```text
+docs/windows/05-configurando-a-rede.md
+```
+
 ## Considerações finais
 
 A máquina virtual foi criada e seus principais recursos foram definidos.
@@ -247,7 +255,7 @@ A partir dela, será possível instalar o sistema operacional e posteriormente u
 
 ## Próxima etapa
 
-A próxima etapa consiste em configurar os recursos da máquina virtual antes da instalação do sistema operacional.
+A próxima etapa consiste em revisar e ajustar as configurações da máquina virtual antes de iniciar a instalação do sistema operacional.
 
 O procedimento será documentado em:
 
