@@ -74,8 +74,6 @@ VirtualBox Manager
        +-- New
 ```
 
-[Em breve: Imagem da tela principal do VirtualBox com a opção New]
-
 ## Definindo o nome da máquina
 
 Informe um nome para identificar a máquina virtual.
@@ -97,8 +95,6 @@ Sistema: Debian
 Arquitetura: 64-bit
 ```
 
-[Em breve: Imagem da definição do nome e do sistema operacional]
-
 ## Selecionando a imagem ISO
 
 Na etapa seguinte, selecione a imagem ISO do Debian obtida anteriormente.
@@ -110,8 +106,6 @@ C:\Users\usuario\Downloads\debian.iso
 ```
 
 O VirtualBox utilizará essa imagem como mídia de instalação quando a máquina virtual for iniciada.
-
-[Em breve: Imagem da seleção da imagem ISO]
 
 ## Configurando a memória RAM
 
@@ -127,8 +121,6 @@ Essa configuração pode ser alterada posteriormente de acordo com os recursos d
 
 É importante evitar a configuração de uma quantidade excessiva de memória, pois o sistema hospedeiro também precisa continuar dispondo de memória suficiente para funcionar.
 
-[Em breve: Imagem da configuração da memória RAM]
-
 ## Configurando os processadores
 
 O VirtualBox também permite definir quantos processadores virtuais serão disponibilizados para a máquina.
@@ -140,8 +132,6 @@ Processadores: 2
 ```
 
 Assim como a memória, essa configuração pode ser alterada posteriormente.
-
-[Em breve: Imagem da configuração dos processadores]
 
 ## Criando o disco virtual
 
@@ -155,8 +145,6 @@ Armazenamento
        +-- Criar novo disco virtual
 ```
 
-[Em breve: Imagem da criação do disco virtual]
-
 ## Definindo o tamanho do disco
 
 Para este laboratório será utilizado um disco virtual com:
@@ -168,8 +156,6 @@ Tamanho: 20 GB
 O tamanho necessário depende da finalidade da máquina virtual.
 
 Um ambiente destinado apenas a estudos básicos pode utilizar uma configuração menor. Já laboratórios que envolvem Docker, servidores, bancos de dados ou Magento 2 podem exigir uma quantidade significativamente maior de armazenamento.
-
-[Em breve: Imagem da definição do tamanho do disco]
 
 ## Revisando a configuração
 
@@ -185,8 +171,6 @@ Processadores: 2
 Disco virtual: 20 GB
 ```
 
-[Em breve: Imagem do resumo da configuração da máquina virtual]
-
 ## Criando a máquina virtual
 
 Depois de revisar as configurações, confirme a criação da máquina virtual.
@@ -194,8 +178,6 @@ Depois de revisar as configurações, confirme a criação da máquina virtual.
 O VirtualBox criará os arquivos necessários para representar o hardware virtual e armazenará o disco virtual no diretório configurado.
 
 Após a conclusão, a máquina deverá aparecer na lista de máquinas virtuais do VirtualBox Manager.
-
-[Em breve: Imagem da máquina virtual criada no VirtualBox Manager]
 
 ## Verificando a máquina virtual
 
@@ -218,8 +200,6 @@ Processadores:
 Armazenamento:
     20 GB
 ```
-
-[Em breve: Imagem das configurações da máquina virtual criada]
 
 ## Resultado
 
@@ -274,4 +254,3 @@ O procedimento será documentado em:
 ```text
 docs/windows/03-configurando-a-maquina-virtual.md
 ```
-
