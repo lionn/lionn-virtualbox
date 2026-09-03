@@ -1,68 +1,84 @@
-# Introdução ao Oracle VirtualBox
+# Virtualização
 
-O Oracle VirtualBox é uma plataforma de virtualização que permite executar diferentes sistemas operacionais dentro de máquinas virtuais.
+Virtualização é uma tecnologia que permite criar ambientes computacionais virtuais utilizando os recursos de um computador físico.
 
-Em vez de instalar um sistema operacional diretamente no computador físico, podemos criar uma máquina virtual que possui recursos virtuais de processamento, memória, armazenamento e rede.
+Em vez de cada sistema operacional precisar de um computador próprio, podemos utilizar um único equipamento físico para executar diferentes máquinas virtuais.
 
-Isso permite criar ambientes isolados para estudos, desenvolvimento, testes e laboratórios de infraestrutura.
+Cada máquina virtual possui recursos virtuais de processamento, memória, armazenamento e rede, permitindo executar um sistema operacional de forma independente dentro do ambiente virtualizado.
 
-Neste projeto será utilizado o Oracle VirtualBox para criar um laboratório baseado em Debian, utilizando inicialmente um computador com Windows como sistema operacional hospedeiro.
+## Conceito de virtualização
 
-## Objetivo do projeto
+Em um ambiente tradicional, podemos ter um computador físico executando diretamente um sistema operacional:
 
-O objetivo deste projeto é documentar, de forma prática e progressiva, a criação e utilização de uma máquina virtual para estudos de Linux, infraestrutura, redes, Docker e DevOps.
+```text
+Hardware físico
+       |
+       v
+Windows
+       |
+       +-- Aplicações
+```
 
-Durante o laboratório serão abordados conceitos e procedimentos como:
+Com a virtualização, uma camada de software permite criar máquinas virtuais sobre o sistema operacional existente:
 
-* Instalação do Oracle VirtualBox
-* Criação de uma máquina virtual
-* Configuração de memória e CPU
-* Configuração de armazenamento
-* Configuração de rede
-* Instalação do Debian
-* Instalação das Guest Additions
-* Configuração de pastas compartilhadas
-* Criação e utilização de snapshots
-* Administração básica da máquina virtual
+```text
+Hardware físico
+       |
+       v
+Windows
+       |
+       v
+Oracle VirtualBox
+       |
+       +------------------+
+       |                  |
+       v                  v
+   Máquina 1          Máquina 2
+    Debian              Linux
+```
 
-A ideia é começar com uma máquina virtual simples e, posteriormente, utilizar esse ambiente como base para outros laboratórios.
+Dessa forma, diferentes sistemas operacionais podem ser executados no mesmo computador físico.
 
-## O que é virtualização?
+O Oracle VirtualBox é uma plataforma de virtualização que permite criar e executar essas máquinas virtuais.
 
-Virtualização é uma tecnologia que permite utilizar recursos físicos de um computador para criar ambientes computacionais virtuais.
+## O que é uma máquina virtual?
 
-Um único computador físico pode executar várias máquinas virtuais simultaneamente.
+Uma máquina virtual, ou VM (Virtual Machine), é um ambiente criado por um software de virtualização para executar um sistema operacional.
+
+Para o sistema operacional guest, a máquina virtual apresenta recursos de hardware virtualizados.
 
 Por exemplo:
 
 ```text
-Computador físico
+Máquina virtual
        |
-       v
-+----------------------+
-|   Sistema Windows    |
-|                      |
-|  Oracle VirtualBox   |
-+----------------------+
-       |
-       +----------------------+
-       |                      |
-       v                      v
-+-------------+        +-------------+
-| debian-lab  |        | outra VM    |
-| Debian      |        | Linux       |
-+-------------+        +-------------+
+       +-- CPU virtual
+       +-- Memória RAM virtual
+       +-- Disco virtual
+       +-- Placa de rede virtual
+       +-- Controladores virtuais
+       +-- Dispositivos virtuais
 ```
 
-Cada máquina virtual possui seus próprios recursos virtuais e pode executar um sistema operacional independente.
+O sistema operacional instalado dentro dessa máquina entende esses recursos como componentes de um computador.
 
-## Máquina física e máquina virtual
+No laboratório deste projeto teremos:
 
-Para entender o funcionamento do VirtualBox, é importante diferenciar alguns conceitos.
+```text
+Máquina virtual:
+debian-lab
+
+Sistema operacional:
+Debian
+```
+
+## Host e Guest
+
+Dois termos aparecem constantemente quando trabalhamos com virtualização: `host` e `guest`.
 
 ### Host
 
-O host é o computador físico onde o Oracle VirtualBox está instalado.
+O host é o computador físico onde o software de virtualização está instalado.
 
 Neste laboratório:
 
@@ -71,18 +87,19 @@ Host:
 Windows
 ```
 
-O host fornece os recursos físicos utilizados pelas máquinas virtuais, como:
+O host fornece os recursos físicos utilizados pelas máquinas virtuais.
+
+Entre esses recursos estão:
 
 * Processador
 * Memória RAM
 * Armazenamento
-* Interface de rede
-* Dispositivos USB
-* Outros recursos de hardware
+* Rede
+* Dispositivos físicos
 
 ### Guest
 
-Guest é o sistema operacional executado dentro da máquina virtual.
+O guest é o sistema operacional executado dentro da máquina virtual.
 
 Neste laboratório:
 
@@ -91,129 +108,86 @@ Guest:
 Debian
 ```
 
-O Debian não está sendo instalado diretamente no hardware físico.
-
-Ele será executado dentro da máquina virtual criada pelo VirtualBox.
-
-### Máquina Virtual
-
-A máquina virtual é o ambiente criado pelo VirtualBox para executar o sistema operacional guest.
-
-Neste projeto:
+A relação pode ser representada assim:
 
 ```text
-Máquina virtual:
-debian-lab
+Computador físico
+       |
+       +-- Host: Windows
+               |
+               +-- Oracle VirtualBox
+                       |
+                       +-- Guest: Debian
 ```
 
-A VM possui recursos virtuais, como:
-
-```text
-CPU virtual
-RAM virtual
-Disco virtual
-Placa de rede virtual
-Controladores virtuais
-```
-
-Esses recursos são apresentados ao sistema operacional guest como se fossem componentes de um computador.
-
-## Estrutura do laboratório
-
-O laboratório deste projeto será organizado da seguinte maneira:
-
-```text
-Windows
-   |
-   v
-Oracle VirtualBox
-   |
-   v
-Máquina Virtual
-debian-lab
-   |
-   v
-Debian
-   |
-   +-- Rede
-   |
-   +-- Guest Additions
-   |
-   +-- Pasta compartilhada
-   |
-   +-- Snapshots
-```
-
-Essa estrutura será utilizada como base para os próximos estudos.
-
-## Por que utilizar uma máquina virtual?
-
-Máquinas virtuais são muito úteis para ambientes de estudo porque permitem experimentar diferentes configurações sem modificar diretamente o sistema operacional principal.
-
-Por exemplo, podemos utilizar uma VM para:
-
-* Instalar um servidor Linux
-* Testar configurações de rede
-* Instalar serviços
-* Estudar comandos Linux
-* Testar Docker
-* Configurar Nginx
-* Configurar PHP
-* Configurar bancos de dados
-* Testar aplicações
-* Simular ambientes de infraestrutura
-* Estudar ferramentas DevOps
-
-Se uma configuração causar problemas, podemos utilizar recursos como snapshots para retornar a um estado anterior da máquina.
-
-## VirtualBox como ambiente de laboratório
-
-O Oracle VirtualBox é particularmente útil para estudos e testes porque permite criar máquinas virtuais em um computador que já possui um sistema operacional instalado.
-
-Por exemplo:
-
-```text
-Windows
-   |
-   +-- VirtualBox
-         |
-         +-- Debian
-         |
-         +-- Ubuntu
-         |
-         +-- Windows Server
-         |
-         +-- outras VMs
-```
-
-A quantidade de máquinas virtuais que pode ser executada simultaneamente depende principalmente dos recursos disponíveis no computador físico.
-
-Quanto mais memória RAM, CPU e armazenamento estiverem disponíveis, maior será a capacidade do host para executar máquinas virtuais.
+A documentação oficial do VirtualBox utiliza justamente os conceitos de host para o sistema operacional do computador físico e guest para o sistema operacional executado dentro da VM.
 
 ## Hypervisor
 
-O software responsável por criar e administrar o ambiente de virtualização é chamado de hypervisor.
+O hypervisor é o componente responsável por fornecer e administrar o ambiente de virtualização.
 
-O Oracle VirtualBox é classificado como um hypervisor hospedado, também conhecido como hypervisor de tipo 2.
+Ele controla a utilização dos recursos físicos e apresenta recursos virtuais para as máquinas virtuais.
 
-Nesse modelo, existe um sistema operacional instalado no computador físico.
+Existem dois modelos principais de hypervisor:
 
-A estrutura pode ser representada assim:
+```text
+Tipo 1
+Bare Metal
+```
+
+e:
+
+```text
+Tipo 2
+Hosted
+```
+
+## Hypervisor Tipo 1
+
+Um hypervisor de tipo 1 é executado diretamente sobre o hardware físico.
+
+A estrutura é:
 
 ```text
 Hardware físico
        |
        v
-Sistema operacional host
+Hypervisor
        |
-       v
-Oracle VirtualBox
+       +-- Máquina virtual
        |
-       v
-Sistema operacional guest
+       +-- Máquina virtual
+       |
+       +-- Máquina virtual
 ```
 
-Neste projeto:
+Nesse modelo, não existe um sistema operacional convencional entre o hardware e o hypervisor.
+
+Exemplos de tecnologias que utilizam esse modelo incluem plataformas voltadas para virtualização de servidores e data centers.
+
+## Hypervisor Tipo 2
+
+Um hypervisor de tipo 2 é executado sobre um sistema operacional existente.
+
+A estrutura é:
+
+```text
+Hardware físico
+       |
+       v
+Sistema operacional
+       |
+       v
+Hypervisor
+       |
+       +-- Máquina virtual
+       |
+       +-- Máquina virtual
+```
+
+O Oracle VirtualBox é classificado pela própria Oracle como um hypervisor hospedado, também conhecido como hypervisor de tipo 2.
+
+No nosso laboratório:
 
 ```text
 Hardware
@@ -228,28 +202,84 @@ Oracle VirtualBox
 Debian
 ```
 
-Isso é diferente de uma arquitetura em que o hypervisor é executado diretamente sobre o hardware físico.
+Isso permite utilizar o computador normalmente no Windows enquanto a máquina virtual Debian está em execução.
 
-## Recursos virtuais
+## Recursos físicos e recursos virtuais
 
-Uma máquina virtual possui recursos que são apresentados ao sistema operacional guest como hardware virtual.
+Uma máquina virtual utiliza recursos físicos do computador host.
 
-Entre eles estão:
-
-### CPU
-
-Podemos definir quantos processadores virtuais serão disponibilizados para a VM.
-
-Neste laboratório:
+Por exemplo, suponha que o computador possua:
 
 ```text
 CPU:
+8 núcleos
+
+RAM:
+16 GB
+
+Disco:
+500 GB
+```
+
+Podemos criar uma máquina virtual utilizando uma parte desses recursos:
+
+```text
+debian-lab
+
+CPU:
+2 vCPUs
+
+RAM:
+2 GB
+
+Disco:
+20 GB
+```
+
+Durante a execução da VM, esses recursos são disponibilizados para o sistema operacional guest.
+
+## CPU virtual
+
+A CPU virtual, normalmente representada como `vCPU`, é o processador virtual disponibilizado para a máquina virtual.
+
+Por exemplo:
+
+```text
+Computador físico
+8 núcleos
+     |
+     +-- 2 vCPUs --> debian-lab
+```
+
+A quantidade de CPUs virtuais deve ser escolhida considerando os recursos disponíveis no host.
+
+A configuração exagerada pode prejudicar tanto a máquina virtual quanto o sistema operacional principal.
+
+Neste laboratório utilizaremos:
+
+```text
 2 vCPUs
 ```
 
-### Memória RAM
+## Memória virtual
 
-A quantidade de memória disponível para a máquina virtual também pode ser configurada.
+A memória RAM também é compartilhada entre o host e as máquinas virtuais.
+
+Por exemplo:
+
+```text
+Host:
+16 GB RAM
+
+        |
+        +-- 2 GB --> debian-lab
+        |
+        +-- restante --> Windows e aplicações
+```
+
+A memória atribuída à VM deixa de estar disponível para o host enquanto a máquina virtual estiver utilizando esse recurso.
+
+Por isso, a quantidade de memória deve ser planejada de acordo com os recursos físicos disponíveis.
 
 Neste laboratório:
 
@@ -258,275 +288,547 @@ RAM:
 2048 MB
 ```
 
-### Armazenamento
+A documentação do VirtualBox também alerta que a memória atribuída à VM não fica disponível para o sistema operacional host enquanto a máquina virtual estiver em execução.
 
-A máquina virtual utilizará um disco virtual.
+## Disco virtual
 
-Neste laboratório:
+Uma máquina virtual normalmente utiliza um arquivo ou conjunto de arquivos no armazenamento do host para representar seu disco virtual.
+
+Podemos imaginar:
 
 ```text
-Disco:
-20 GB
+Windows
+   |
+   +-- Disco físico
+         |
+         +-- Arquivos da VM
+               |
+               +-- debian-lab.vdi
 ```
 
-Esse disco será utilizado pelo Debian durante a instalação e posteriormente para os demais testes.
+Dentro do Debian, esse recurso aparece como um disco.
 
-### Rede
-
-O VirtualBox fornece interfaces de rede virtuais que permitem conectar a máquina virtual ao host, a outras máquinas virtuais ou à rede externa, dependendo do modo de rede configurado.
-
-Inicialmente será utilizado:
+Por exemplo:
 
 ```text
-Modo:
+Debian
+   |
+   +-- /dev/sda
+```
+
+O sistema operacional guest não precisa conhecer os detalhes de como o arquivo do disco virtual é armazenado pelo host.
+
+Para ele, o dispositivo funciona como um disco.
+
+## Disco físico x disco virtual
+
+A diferença pode ser representada assim:
+
+```text
+Disco físico
+      |
+      v
+Hardware real
+      |
+      v
+Sistema operacional host
+```
+
+Enquanto:
+
+```text
+Disco virtual
+      |
+      v
+Arquivo armazenado no host
+      |
+      v
+Oracle VirtualBox
+      |
+      v
+Sistema operacional guest
+```
+
+Essa abstração permite criar, mover, copiar e administrar máquinas virtuais sem precisar instalar um disco físico exclusivo para cada sistema operacional.
+
+## Rede virtual
+
+A virtualização também permite criar interfaces de rede virtuais.
+
+A máquina virtual possui uma placa de rede virtual que é administrada pelo VirtualBox.
+
+Podemos representar:
+
+```text
+Debian
+   |
+   v
+Placa de rede virtual
+   |
+   v
+Oracle VirtualBox
+   |
+   v
+Placa de rede física
+   |
+   v
+Rede
+```
+
+O VirtualBox possui diferentes modos de rede.
+
+Entre eles estão:
+
+* NAT
+* Bridged Adapter
+* Host-only Adapter
+* Internal Network
+
+Cada modo possui uma finalidade diferente.
+
+Neste laboratório será utilizado inicialmente o modo:
+
+```text
 NAT
 ```
 
-A configuração detalhada será realizada posteriormente na documentação específica do Windows.
+A configuração prática da rede será apresentada posteriormente na documentação do Windows.
 
-## Sistema operacional do laboratório
+## NAT
 
-O sistema operacional utilizado neste projeto será o Debian.
+O modo NAT permite que a máquina virtual utilize a conexão de rede do host para acessar redes externas.
 
-O Debian é uma distribuição Linux amplamente utilizada em ambientes de servidores, infraestrutura e desenvolvimento.
-
-Ele também é uma excelente opção para um laboratório de estudos porque permite trabalhar diretamente com conceitos importantes de administração Linux.
-
-Neste projeto, a máquina virtual será chamada:
+Uma representação simplificada:
 
 ```text
-debian-lab
+Debian
+   |
+   v
+Rede virtual
+   |
+   v
+VirtualBox NAT
+   |
+   v
+Windows
+   |
+   v
+Internet
 ```
 
-## Configuração inicial do laboratório
+Esse modo é bastante conveniente para uma máquina virtual de laboratório porque normalmente permite acesso à Internet sem exigir uma configuração mais complexa na rede física.
 
-A configuração planejada para a máquina virtual será:
+## Bridged Adapter
 
-| Recurso             | Configuração      |
-| ------------------- | ----------------- |
-| Nome                | `debian-lab`      |
-| Sistema operacional | Debian            |
-| CPU                 | 2 vCPUs           |
-| Memória             | 2048 MB           |
-| Disco               | 20 GB             |
-| Rede                | NAT               |
-| Host                | Windows           |
-| Hypervisor          | Oracle VirtualBox |
+No modo Bridged Adapter, a máquina virtual é conectada à rede física através da interface de rede do host.
 
-Essa configuração é suficiente para o laboratório inicial.
+A estrutura pode ser representada assim:
 
-Dependendo dos testes realizados posteriormente, os recursos da máquina virtual poderão ser ajustados.
+```text
+Debian
+   |
+   v
+Placa virtual
+   |
+   v
+VirtualBox
+   |
+   v
+Interface física do Windows
+   |
+   v
+Rede local
+```
 
-## Guest Additions
+Nesse cenário, a máquina virtual pode participar da rede como outro dispositivo.
 
-O Oracle VirtualBox também possui um conjunto de ferramentas chamado Guest Additions.
+Esse modo é útil em determinados laboratórios onde é necessário que a VM seja acessível diretamente por outros dispositivos da rede.
 
-Esses componentes são instalados dentro do sistema operacional guest e fornecem recursos adicionais de integração entre a máquina virtual e o host.
+## Host-only Adapter
 
-Entre os recursos disponíveis estão:
-
-* Melhor integração do mouse
-* Ajuste automático de resolução
-* Integração com a área de transferência
-* Pastas compartilhadas
-* Recursos gráficos adicionais
-* Melhor integração entre host e guest
-
-Neste laboratório, as Guest Additions serão utilizadas principalmente para permitir a configuração de pastas compartilhadas entre Windows e Debian.
-
-A instalação será realizada posteriormente.
-
-## Pastas compartilhadas
-
-Uma pasta compartilhada permite disponibilizar um diretório do computador host para a máquina virtual.
+O modo Host-only permite criar uma rede entre o host e as máquinas virtuais sem necessariamente fornecer acesso direto à rede externa.
 
 Por exemplo:
 
 ```text
 Windows
-C:\VirtualBox\Shared
-        |
-        v
-Oracle VirtualBox
-        |
-        v
-Debian
-/mnt/shared
+   |
+   +----------------+
+                    |
+                    v
+              Rede Host-only
+                    |
+                    +-- Debian
+                    |
+                    +-- outra VM
 ```
 
-Isso facilita a transferência de arquivos entre o Windows e o Debian durante os estudos.
+Esse tipo de configuração pode ser útil para criar laboratórios isolados.
 
-A configuração desse recurso será abordada em:
+## Internal Network
 
-```text
-docs/windows/06-pastas-compartilhadas.md
-```
-
-## Snapshots
-
-Outro recurso importante do VirtualBox é o snapshot.
-
-Um snapshot representa um estado específico da máquina virtual que pode ser restaurado posteriormente.
+O modo Internal Network permite criar uma rede utilizada apenas pelas máquinas virtuais conectadas a ela.
 
 Por exemplo:
 
 ```text
-Debian instalado
+             Internal Network
+                    |
+          +---------+---------+
+          |                   |
+          v                   v
+       Debian 1            Debian 2
+```
+
+Esse cenário pode ser interessante para simular redes internas e ambientes com múltiplos servidores.
+
+## Virtualização de hardware
+
+Para executar máquinas virtuais de forma eficiente, o processador físico precisa oferecer recursos de virtualização por hardware.
+
+Em processadores Intel, essa tecnologia está associada ao:
+
+```text
+Intel VT-x
+```
+
+Em processadores AMD:
+
+```text
+AMD-V
+```
+
+Esses recursos permitem que o software de virtualização utilize mecanismos específicos do processador para executar máquinas virtuais.
+
+O VirtualBox utiliza extensões de virtualização por hardware quando disponíveis e configuradas no sistema.
+
+## Virtualização e desempenho
+
+A máquina virtual não possui recursos físicos próprios.
+
+Ela utiliza os recursos disponíveis no computador host.
+
+Por isso, o desempenho da VM depende de fatores como:
+
+* Processador
+* Memória RAM
+* Velocidade do armazenamento
+* Configuração da máquina virtual
+* Sistema operacional guest
+* Carga de trabalho
+* Quantidade de máquinas virtuais em execução
+
+Por exemplo:
+
+```text
+Host com poucos recursos
+        |
+        v
+VM com muitos recursos
+        |
+        v
+Possível degradação de desempenho
+```
+
+O planejamento dos recursos é importante para manter tanto o host quanto o guest funcionando adequadamente.
+
+## Isolamento
+
+Uma das características importantes da virtualização é o isolamento entre o guest e o host.
+
+A máquina virtual executa o sistema operacional dentro de um ambiente controlado pelo software de virtualização.
+
+De maneira simplificada:
+
+```text
+Windows
+   |
+   v
+Oracle VirtualBox
+   |
+   +-- Ambiente virtual
+           |
+           +-- Debian
+```
+
+Isso permite realizar testes no guest sem instalar diretamente os componentes testados no sistema operacional principal.
+
+Entretanto, virtualização não deve ser interpretada como uma barreira de segurança absoluta.
+
+Máquinas virtuais ainda devem ser administradas e protegidas adequadamente.
+
+## Virtualização para desenvolvimento e testes
+
+Um dos usos mais comuns de máquinas virtuais é criar ambientes de desenvolvimento e testes.
+
+Por exemplo:
+
+```text
+Computador pessoal
        |
        v
-Configuração inicial
+Oracle VirtualBox
+       |
+       +-- Debian
+             |
+             +-- Nginx
+             +-- PHP
+             +-- MariaDB
+             +-- Redis
+             +-- Docker
+             +-- aplicações
+```
+
+Esse ambiente permite realizar testes sem transformar o computador principal em um servidor de laboratório.
+
+A própria documentação do VirtualBox destaca seu uso para desenvolvimento e testes, incluindo investigação de problemas relacionados a configurações de software e rede.
+
+## Virtualização para estudos
+
+Para estudos de infraestrutura e DevOps, a virtualização permite reproduzir diversos cenários.
+
+Por exemplo:
+
+```text
+Laboratório
+    |
+    +-- Debian
+    |
+    +-- Docker
+    |
+    +-- Nginx
+    |
+    +-- Banco de dados
+    |
+    +-- Git
+    |
+    +-- CI/CD
+```
+
+Também podemos criar várias máquinas virtuais:
+
+```text
+VirtualBox
+    |
+    +-- Debian Web
+    |
+    +-- Debian Database
+    |
+    +-- Debian Docker
+    |
+    +-- Debian Test
+```
+
+Isso possibilita simular uma pequena infraestrutura utilizando apenas um computador físico.
+
+## Virtualização não é emulação
+
+Virtualização e emulação são conceitos diferentes.
+
+Na virtualização, o sistema guest pode utilizar diretamente ou de forma assistida recursos da arquitetura de hardware compatível com o host.
+
+Na emulação, o software pode simular uma arquitetura diferente daquela existente fisicamente.
+
+Uma comparação simplificada:
+
+```text
+Virtualização
+
+CPU x86_64
+    |
+    v
+VM x86_64
+```
+
+Enquanto:
+
+```text
+Emulação
+
+CPU x86_64
+    |
+    v
+Software de emulação
+    |
+    v
+Arquitetura diferente
+```
+
+A virtualização tende a oferecer melhor desempenho quando o hardware e o sistema guest são compatíveis com a arquitetura utilizada.
+
+## Virtualização e portabilidade
+
+Máquinas virtuais também podem facilitar a movimentação de ambientes entre computadores.
+
+O VirtualBox utiliza formatos de arquivos de máquinas virtuais que permitem transportar VMs entre diferentes hosts compatíveis.
+
+Por exemplo:
+
+```text
+Windows
+   |
+   v
+Máquina virtual Debian
+   |
+   v
+Exportação
+   |
+   v
+Outro computador
+   |
+   v
+Importação
+   |
+   v
+Máquina virtual Debian
+```
+
+A documentação do VirtualBox também destaca a possibilidade de importar e exportar máquinas virtuais utilizando formatos como OVF.
+
+## Virtualização e snapshots
+
+Snapshots são outro recurso importante para laboratórios.
+
+Podemos criar um ponto de recuperação antes de realizar uma alteração.
+
+Por exemplo:
+
+```text
+Debian funcionando
        |
        v
 Snapshot
        |
        v
-Novos testes
+Instalar software
        |
        v
-Alterações
+Alterar configuração
+       |
+       v
+Realizar testes
 ```
 
-Se um teste causar um problema, podemos utilizar o snapshot para retornar a um estado anterior da máquina virtual.
+Se algo der errado, podemos retornar ao estado registrado pelo snapshot.
 
-Snapshots são especialmente úteis em ambientes de laboratório e testes.
+Esse recurso será apresentado posteriormente na documentação específica do Windows.
 
-Eles não devem, entretanto, ser tratados como substitutos de uma estratégia de backup.
+## Virtualização no nosso laboratório
 
-A utilização de snapshots será apresentada posteriormente no projeto.
-
-## Laboratório e estudos de DevOps
-
-A máquina virtual criada neste projeto poderá servir como base para outros laboratórios.
-
-Depois que o Debian estiver instalado e configurado, podemos utilizar a VM para estudar tecnologias como:
+Neste projeto será utilizado o seguinte ambiente:
 
 ```text
-Linux
-   |
-   +-- Shell
-   +-- SSH
-   +-- Redes
-   +-- Nginx
-   +-- PHP
-   +-- MariaDB
-   +-- Redis
-   +-- Docker
-   +-- Git
-   +-- Automação
-   +-- CI/CD
-   +-- DevOps
-```
-
-Isso permite utilizar uma única máquina física como ambiente de estudos para diferentes tecnologias.
-
-## Virtualização e ambientes de teste
-
-Uma das principais vantagens da virtualização é permitir a criação de ambientes isolados.
-
-Por exemplo, podemos testar uma alteração no Debian sem precisar alterar diretamente o Windows.
-
-```text
+Hardware físico
+       |
+       v
 Windows
-   |
-   +-- Oracle VirtualBox
-          |
-          +-- Debian laboratório
-                  |
-                  +-- Testes
-                  +-- Configurações
-                  +-- Serviços
-                  +-- Experimentos
+       |
+       v
+Oracle VirtualBox
+       |
+       v
+debian-lab
+       |
+       v
+Debian
 ```
 
-Esse modelo é bastante útil durante o aprendizado porque permite experimentar configurações diferentes e reconstruir o ambiente quando necessário.
-
-## O que será construído neste projeto
-
-Ao longo da documentação será construída uma máquina virtual Debian funcional.
-
-Antes de iniciar os procedimentos práticos, serão apresentados os conceitos fundamentais de virtualização.
-
-O processo geral seguirá esta sequência:
+A máquina virtual terá inicialmente:
 
 ```text
-01
-|
-v
+Nome:
+debian-lab
+
+CPU:
+2 vCPUs
+
+RAM:
+2048 MB
+
+Disco:
+20 GB
+
+Rede:
+NAT
+```
+
+Essa configuração será utilizada como base para os procedimentos práticos.
+
+## Fluxo do laboratório
+
+Depois de entender os conceitos de virtualização, o laboratório será construído progressivamente.
+
+A sequência será:
+
+```text
 Introdução
-|
-v
-02
-|
-v
+    |
+    v
 Virtualização
-|
-v
-Windows
-|
-+-- 01 Instalação do VirtualBox
-|
-+-- 02 Criação da máquina virtual
-|
-+-- 03 Configuração da máquina virtual
-|
-+-- 04 Instalação do Debian
-|
-+-- 05 Configuração da rede
-|
-+-- 06 Pastas compartilhadas
-|
-+-- 07 Snapshots
+    |
+    v
+Instalação do VirtualBox
+    |
+    v
+Criação da VM
+    |
+    v
+Configuração da VM
+    |
+    v
+Instalação do Debian
+    |
+    v
+Configuração da rede
+    |
+    v
+Pastas compartilhadas
+    |
+    v
+Snapshots
 ```
 
-Ao final, teremos um laboratório funcional pronto para receber novos estudos.
+A parte conceitual termina aqui.
 
-## Estrutura da documentação
+A partir do próximo documento começa a configuração prática do ambiente no Windows.
 
-A documentação está organizada inicialmente em duas partes: conceitos gerais e procedimentos específicos para o sistema operacional utilizado como host.
+## Resumo
 
-Atualmente, o projeto possui a seguinte estrutura:
+Virtualização permite criar computadores virtuais dentro de um computador físico.
 
-```text
-docs/
-├── 01-introducao.md
-├── 02-virtualizacao.md
-└── windows/
-    ├── 01-instalando-o-virtualbox.md
-    ├── 02-criando-a-maquina-virtual.md
-    ├── 03-configurando-a-maquina-virtual.md
-    ├── 04-instalando-o-debian.md
-    ├── 05-configurando-a-rede.md
-    ├── 06-pastas-compartilhadas.md
-    └── 07-snapshots.md
-```
+Os principais conceitos apresentados neste documento foram:
 
-A documentação para Linux será adicionada posteriormente, mantendo a mesma organização do projeto.
+| Conceito      | Descrição                                             |
+| ------------- | ----------------------------------------------------- |
+| Host          | Sistema operacional do computador físico              |
+| Guest         | Sistema operacional executado dentro da VM            |
+| VM            | Ambiente virtual onde o guest é executado             |
+| Hypervisor    | Software responsável pela virtualização               |
+| vCPU          | Processador virtual atribuído à VM                    |
+| RAM virtual   | Memória disponibilizada para a VM                     |
+| Disco virtual | Armazenamento utilizado pela VM                       |
+| Rede virtual  | Interface de rede apresentada à VM                    |
+| NAT           | Modo de rede utilizado inicialmente neste laboratório |
+| Snapshot      | Ponto de recuperação da VM                            |
 
 ## Considerações
 
-O objetivo deste laboratório não é apenas aprender a instalar o Oracle VirtualBox.
+A virtualização é uma ferramenta importante para desenvolvimento, testes, estudos de infraestrutura e administração de sistemas.
 
-A proposta é construir uma base de infraestrutura que possa ser utilizada para estudos posteriores.
+Neste projeto, o Oracle VirtualBox será utilizado para transformar um computador Windows em um ambiente de laboratório capaz de executar o Debian e, posteriormente, outras tecnologias.
 
-A partir de uma máquina virtual Debian, será possível experimentar diferentes tecnologias e conceitos sem depender de um servidor físico dedicado.
-
-Esse tipo de ambiente também permite reproduzir cenários, testar configurações e documentar procedimentos de forma organizada.
+Com os conceitos apresentados, já podemos partir para a instalação do software de virtualização.
 
 ## Próximos passos
 
-Antes de iniciar a instalação do Oracle VirtualBox, o próximo documento apresenta os conceitos fundamentais relacionados à virtualização.
+O próximo documento inicia a parte prática do projeto.
+
+Será realizada a instalação do Oracle VirtualBox no Windows.
 
 Próximo documento:
-
-```text
-docs/02-virtualizacao.md
-```
-
-Depois da introdução aos conceitos de virtualização, será iniciada a configuração prática do laboratório no Windows.
-
-A documentação seguirá então para:
 
 ```text
 docs/windows/01-instalando-o-virtualbox.md
 ```
 
+A partir desse ponto, os documentos da pasta `windows/` apresentarão passo a passo a construção do laboratório `debian-lab`.
