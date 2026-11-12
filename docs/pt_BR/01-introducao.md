@@ -8,6 +8,10 @@ Isso permite criar ambientes isolados para estudos, desenvolvimento, testes e la
 
 Neste projeto será utilizado o Oracle VirtualBox para criar um laboratório baseado em Debian, utilizando inicialmente um computador com Windows como sistema operacional hospedeiro.
 
+---
+
+<br></br>
+
 ## Objetivo do projeto
 
 O objetivo deste projeto é documentar, de forma prática e progressiva, a criação e utilização de uma máquina virtual para estudos de Linux, infraestrutura, redes, Docker e DevOps.
@@ -26,6 +30,10 @@ Durante o laboratório serão abordados conceitos e procedimentos como:
 * Administração básica da máquina virtual
 
 A ideia é começar com uma máquina virtual simples e, posteriormente, utilizar esse ambiente como base para outros laboratórios.
+
+---
+
+<br></br>
 
 ## O que é virtualização?
 
@@ -95,6 +103,10 @@ O Debian não está sendo instalado diretamente no hardware físico.
 
 Ele será executado dentro da máquina virtual criada pelo VirtualBox.
 
+---
+
+<br></br>
+
 ### Máquina Virtual
 
 A máquina virtual é o ambiente criado pelo VirtualBox para executar o sistema operacional guest.
@@ -117,6 +129,10 @@ Controladores virtuais
 ```
 
 Esses recursos são apresentados ao sistema operacional guest como se fossem componentes de um computador.
+
+---
+
+<br></br>
 
 ## Estrutura do laboratório
 
@@ -146,6 +162,10 @@ Debian
 
 Essa estrutura será utilizada como base para os próximos estudos.
 
+---
+
+<br></br>
+
 ## Por que utilizar uma máquina virtual?
 
 Máquinas virtuais são muito úteis para ambientes de estudo porque permitem experimentar diferentes configurações sem modificar diretamente o sistema operacional principal.
@@ -165,6 +185,10 @@ Por exemplo, podemos utilizar uma VM para:
 * Estudar ferramentas DevOps
 
 Se uma configuração causar problemas, podemos utilizar recursos como snapshots para retornar a um estado anterior da máquina.
+
+---
+
+<br></br>
 
 ## VirtualBox como ambiente de laboratório
 
@@ -284,6 +308,10 @@ NAT
 
 A configuração detalhada será realizada posteriormente na documentação específica do Windows.
 
+---
+
+<br></br>
+
 ## Sistema operacional do laboratório
 
 O sistema operacional utilizado neste projeto será o Debian.
@@ -297,6 +325,10 @@ Neste projeto, a máquina virtual será chamada:
 ```text
 debian-lab
 ```
+
+---
+
+<br></br>
 
 ## Configuração inicial do laboratório
 
@@ -317,6 +349,10 @@ Essa configuração é suficiente para o laboratório inicial.
 
 Dependendo dos testes realizados posteriormente, os recursos da máquina virtual poderão ser ajustados.
 
+---
+
+<br></br>
+
 ## Guest Additions
 
 O Oracle VirtualBox também possui um conjunto de ferramentas chamado Guest Additions.
@@ -335,6 +371,10 @@ Entre os recursos disponíveis estão:
 Neste laboratório, as Guest Additions serão utilizadas principalmente para permitir a configuração de pastas compartilhadas entre Windows e Debian.
 
 A instalação será realizada posteriormente.
+
+---
+
+<br></br>
 
 ## Pastas compartilhadas
 
@@ -361,6 +401,10 @@ A configuração desse recurso será abordada em:
 ```text
 docs/windows/06-pastas-compartilhadas.md
 ```
+
+---
+
+<br></br>
 
 ## Snapshots
 
@@ -502,6 +546,10 @@ docs/
 
 A documentação para Linux será adicionada posteriormente, mantendo a mesma organização do projeto.
 
+---
+
+<br></br>
+
 ## Considerações
 
 O objetivo deste laboratório não é apenas aprender a instalar o Oracle VirtualBox.
@@ -511,6 +559,10 @@ A proposta é construir uma base de infraestrutura que possa ser utilizada para 
 A partir de uma máquina virtual Debian, será possível experimentar diferentes tecnologias e conceitos sem depender de um servidor físico dedicado.
 
 Esse tipo de ambiente também permite reproduzir cenários, testar configurações e documentar procedimentos de forma organizada.
+
+---
+
+<br></br>
 
 ## Próximos passos
 
