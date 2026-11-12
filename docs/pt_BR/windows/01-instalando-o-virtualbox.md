@@ -8,6 +8,10 @@ Neste documento será apresentada a instalação do Oracle VirtualBox em um comp
 
 A instalação apresentada neste guia utiliza o instalador oficial disponibilizado pela Oracle.
 
+---
+
+<br></br>
+
 ## Pré-requisitos
 
 Antes de iniciar a instalação, é necessário verificar alguns requisitos básicos.
@@ -23,6 +27,10 @@ O computador deve possuir:
 Nas versões atuais do VirtualBox 7.2, são disponibilizados pacotes para Windows 10 e Windows 11 em sistemas x86_64. Também existem pacotes específicos para Windows 11 em processadores ARM, com algumas limitações.
 
 Para este laboratório, será considerado um computador Windows com processador x86_64.
+
+---
+
+<br></br>
 
 ## 1. Download do VirtualBox
 
@@ -52,6 +60,10 @@ Não é necessário utilizar exatamente esse nome, pois a versão e o número da
 
 A Oracle disponibiliza os pacotes de instalação para diferentes sistemas operacionais na página oficial de downloads.
 
+---
+
+<br></br>
+
 ## 2. Iniciando a instalação
 
 Depois de concluir o download, abra a pasta onde o arquivo foi salvo.
@@ -63,6 +75,10 @@ O Windows poderá apresentar uma solicitação de confirmação para executar o 
 Confirme a execução para iniciar o processo de instalação.
 
 Será apresentada a tela inicial do instalador do Oracle VirtualBox.
+
+---
+
+<br></br>
 
 ## 3. Escolhendo os componentes
 
@@ -87,6 +103,10 @@ Clique em:
 Next
 ```
 
+---
+
+<br></br>
+
 ## 4. Diretório de instalação
 
 O instalador solicitará o diretório onde o VirtualBox será instalado.
@@ -104,6 +124,10 @@ Clique em:
 ```text
 Next
 ```
+
+---
+
+<br></br>
 
 ## 5. Atalhos e registro de arquivos
 
@@ -132,6 +156,10 @@ Clique em:
 Next
 ```
 
+---
+
+<br></br>
+
 ## 6. Configuração das interfaces de rede
 
 O instalador também pode informar que serão instalados componentes relacionados à rede.
@@ -145,6 +173,10 @@ Isso é esperado durante a instalação dos componentes de rede.
 Se o instalador apresentar um aviso informando sobre essa possibilidade, leia a mensagem e prossiga com a instalação.
 
 A documentação oficial do VirtualBox informa que os componentes de rede incluem suporte necessário para funcionalidades como Bridged Networking e Host-only Networking.
+
+---
+
+<br></br>
 
 ## 7. Iniciando a instalação
 
@@ -164,6 +196,10 @@ O instalador copiará os arquivos necessários e registrará os componentes do V
 
 A duração desse processo depende do computador utilizado.
 
+---
+
+<br></br>
+
 ## 8. Drivers do VirtualBox
 
 Durante a instalação, o Windows poderá apresentar solicitações relacionadas à instalação de drivers.
@@ -173,6 +209,10 @@ Esses drivers fazem parte do funcionamento do VirtualBox e são necessários par
 Quando o Windows solicitar autorização para instalar componentes de software da Oracle relacionados ao VirtualBox, verifique a mensagem apresentada e permita a instalação.
 
 A instalação desses componentes é necessária para que o VirtualBox possa funcionar corretamente.
+
+---
+
+<br></br>
 
 ## 9. Finalizando a instalação
 
@@ -190,6 +230,10 @@ Finish
 
 O Oracle VirtualBox Manager será iniciado.
 
+---
+
+<br></br>
+
 ## 10. Verificando a instalação
 
 Com o VirtualBox aberto, a janela principal do VirtualBox Manager deverá ser apresentada.
@@ -201,6 +245,10 @@ A ausência de máquinas virtuais é normal, pois a instalação do VirtualBox e
 A interface deverá apresentar opções para criar e administrar máquinas virtuais.
 
 Uma instalação concluída corretamente permite utilizar o VirtualBox para criar, configurar, iniciar e administrar máquinas virtuais.
+
+---
+
+<br></br>
 
 ## 11. Verificando pelo terminal
 
@@ -229,6 +277,10 @@ Um resultado semelhante a este poderá ser apresentado:
 O número apresentado depende da versão instalada.
 
 O `VBoxManage` é uma ferramenta de linha de comando fornecida pelo VirtualBox e permite realizar diversas tarefas de administração das máquinas virtuais.
+
+---
+
+<br></br>
 
 ## 12. Instalação concluída
 
@@ -260,6 +312,10 @@ O Windows continua sendo o sistema operacional principal do computador.
 
 O Debian será executado dentro de uma máquina virtual criada pelo VirtualBox.
 
+---
+
+<br></br>
+
 ## Próximo passo
 
 Com o VirtualBox instalado, o próximo procedimento será criar uma nova máquina virtual.
@@ -275,6 +331,10 @@ Na próxima etapa serão definidos os recursos virtuais da máquina, incluindo:
 * Configuração inicial de rede
 
 O objetivo será preparar uma máquina virtual para a instalação do Debian.
+
+---
+
+<br></br>
 
 ## Referências
 
