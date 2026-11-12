@@ -278,8 +278,6 @@ Uma máquina virtual possui recursos que são apresentados ao sistema operaciona
 
 Entre eles estão:
 
-<br></br>
-
 ### CPU
 
 Podemos definir quantos processadores virtuais serão disponibilizados para a VM.
