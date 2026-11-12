@@ -6,6 +6,10 @@ Em vez de cada sistema operacional precisar de um computador próprio, podemos u
 
 Cada máquina virtual possui recursos virtuais de processamento, memória, armazenamento e rede, permitindo executar um sistema operacional de forma independente dentro do ambiente virtualizado.
 
+---
+
+<br></br>
+
 ## Conceito de virtualização
 
 Em um ambiente tradicional, podemos ter um computador físico executando diretamente um sistema operacional:
@@ -41,6 +45,10 @@ Dessa forma, diferentes sistemas operacionais podem ser executados no mesmo comp
 
 O Oracle VirtualBox é uma plataforma de virtualização que permite criar e executar essas máquinas virtuais.
 
+---
+
+<br></br>
+
 ## O que é uma máquina virtual?
 
 Uma máquina virtual, ou VM (Virtual Machine), é um ambiente criado por um software de virtualização para executar um sistema operacional.
@@ -72,9 +80,15 @@ Sistema operacional:
 Debian
 ```
 
+---
+
+<br></br>
+
 ## Host e Guest
 
 Dois termos aparecem constantemente quando trabalhamos com virtualização: `host` e `guest`.
+
+<br></br>
 
 ### Host
 
@@ -96,6 +110,8 @@ Entre esses recursos estão:
 * Armazenamento
 * Rede
 * Dispositivos físicos
+
+<br></br>
 
 ### Guest
 
@@ -122,6 +138,10 @@ Computador físico
 
 A documentação oficial do VirtualBox utiliza justamente os conceitos de host para o sistema operacional do computador físico e guest para o sistema operacional executado dentro da VM.
 
+---
+
+<br></br>
+
 ## Hypervisor
 
 O hypervisor é o componente responsável por fornecer e administrar o ambiente de virtualização.
@@ -141,6 +161,10 @@ e:
 Tipo 2
 Hosted
 ```
+
+---
+
+<br></br>
 
 ## Hypervisor Tipo 1
 
@@ -164,6 +188,10 @@ Hypervisor
 Nesse modelo, não existe um sistema operacional convencional entre o hardware e o hypervisor.
 
 Exemplos de tecnologias que utilizam esse modelo incluem plataformas voltadas para virtualização de servidores e data centers.
+
+---
+
+<br></br>
 
 ## Hypervisor Tipo 2
 
@@ -204,6 +232,10 @@ Debian
 
 Isso permite utilizar o computador normalmente no Windows enquanto a máquina virtual Debian está em execução.
 
+---
+
+<br></br>
+
 ## Recursos físicos e recursos virtuais
 
 Uma máquina virtual utiliza recursos físicos do computador host.
@@ -238,6 +270,10 @@ Disco:
 
 Durante a execução da VM, esses recursos são disponibilizados para o sistema operacional guest.
 
+---
+
+<br></br>
+
 ## CPU virtual
 
 A CPU virtual, normalmente representada como `vCPU`, é o processador virtual disponibilizado para a máquina virtual.
@@ -260,6 +296,10 @@ Neste laboratório utilizaremos:
 ```text
 2 vCPUs
 ```
+
+---
+
+<br></br>
 
 ## Memória virtual
 
@@ -289,6 +329,10 @@ RAM:
 ```
 
 A documentação do VirtualBox também alerta que a memória atribuída à VM não fica disponível para o sistema operacional host enquanto a máquina virtual estiver em execução.
+
+---
+
+<br></br>
 
 ## Disco virtual
 
@@ -320,6 +364,10 @@ O sistema operacional guest não precisa conhecer os detalhes de como o arquivo 
 
 Para ele, o dispositivo funciona como um disco.
 
+---
+
+<br></br>
+
 ## Disco físico x disco virtual
 
 A diferença pode ser representada assim:
@@ -350,6 +398,10 @@ Sistema operacional guest
 ```
 
 Essa abstração permite criar, mover, copiar e administrar máquinas virtuais sem precisar instalar um disco físico exclusivo para cada sistema operacional.
+
+---
+
+<br></br>
 
 ## Rede virtual
 
@@ -394,6 +446,10 @@ NAT
 
 A configuração prática da rede será apresentada posteriormente na documentação do Windows.
 
+---
+
+<br></br>
+
 ## NAT
 
 O modo NAT permite que a máquina virtual utilize a conexão de rede do host para acessar redes externas.
@@ -417,6 +473,10 @@ Internet
 ```
 
 Esse modo é bastante conveniente para uma máquina virtual de laboratório porque normalmente permite acesso à Internet sem exigir uma configuração mais complexa na rede física.
+
+---
+
+<br></br>
 
 ## Bridged Adapter
 
@@ -444,6 +504,10 @@ Nesse cenário, a máquina virtual pode participar da rede como outro dispositiv
 
 Esse modo é útil em determinados laboratórios onde é necessário que a VM seja acessível diretamente por outros dispositivos da rede.
 
+---
+
+<br></br>
+
 ## Host-only Adapter
 
 O modo Host-only permite criar uma rede entre o host e as máquinas virtuais sem necessariamente fornecer acesso direto à rede externa.
@@ -465,6 +529,10 @@ Windows
 
 Esse tipo de configuração pode ser útil para criar laboratórios isolados.
 
+---
+
+<br></br>
+
 ## Internal Network
 
 O modo Internal Network permite criar uma rede utilizada apenas pelas máquinas virtuais conectadas a ela.
@@ -481,6 +549,10 @@ Por exemplo:
 ```
 
 Esse cenário pode ser interessante para simular redes internas e ambientes com múltiplos servidores.
+
+---
+
+<br></br>
 
 ## Virtualização de hardware
 
@@ -501,6 +573,10 @@ AMD-V
 Esses recursos permitem que o software de virtualização utilize mecanismos específicos do processador para executar máquinas virtuais.
 
 O VirtualBox utiliza extensões de virtualização por hardware quando disponíveis e configuradas no sistema.
+
+---
+
+<br></br>
 
 ## Virtualização e desempenho
 
@@ -532,6 +608,10 @@ Possível degradação de desempenho
 
 O planejamento dos recursos é importante para manter tanto o host quanto o guest funcionando adequadamente.
 
+---
+
+<br></br>
+
 ## Isolamento
 
 Uma das características importantes da virtualização é o isolamento entre o guest e o host.
@@ -556,6 +636,10 @@ Isso permite realizar testes no guest sem instalar diretamente os componentes te
 Entretanto, virtualização não deve ser interpretada como uma barreira de segurança absoluta.
 
 Máquinas virtuais ainda devem ser administradas e protegidas adequadamente.
+
+---
+
+<br></br>
 
 ## Virtualização para desenvolvimento e testes
 
@@ -582,6 +666,10 @@ Oracle VirtualBox
 Esse ambiente permite realizar testes sem transformar o computador principal em um servidor de laboratório.
 
 A própria documentação do VirtualBox destaca seu uso para desenvolvimento e testes, incluindo investigação de problemas relacionados a configurações de software e rede.
+
+---
+
+<br></br>
 
 ## Virtualização para estudos
 
@@ -621,6 +709,10 @@ VirtualBox
 
 Isso possibilita simular uma pequena infraestrutura utilizando apenas um computador físico.
 
+---
+
+<br></br>
+
 ## Virtualização não é emulação
 
 Virtualização e emulação são conceitos diferentes.
@@ -656,6 +748,10 @@ Arquitetura diferente
 
 A virtualização tende a oferecer melhor desempenho quando o hardware e o sistema guest são compatíveis com a arquitetura utilizada.
 
+---
+
+<br></br>
+
 ## Virtualização e portabilidade
 
 Máquinas virtuais também podem facilitar a movimentação de ambientes entre computadores.
@@ -685,6 +781,10 @@ Máquina virtual Debian
 
 A documentação do VirtualBox também destaca a possibilidade de importar e exportar máquinas virtuais utilizando formatos como OVF.
 
+---
+
+<br></br>
+
 ## Virtualização e snapshots
 
 Snapshots são outro recurso importante para laboratórios.
@@ -712,6 +812,10 @@ Realizar testes
 Se algo der errado, podemos retornar ao estado registrado pelo snapshot.
 
 Esse recurso será apresentado posteriormente na documentação específica do Windows.
+
+---
+
+<br></br>
 
 ## Virtualização no nosso laboratório
 
@@ -753,6 +857,10 @@ NAT
 ```
 
 Essa configuração será utilizada como base para os procedimentos práticos.
+
+---
+
+<br></br>
 
 ## Fluxo do laboratório
 
@@ -811,6 +919,10 @@ Os principais conceitos apresentados neste documento foram:
 | NAT           | Modo de rede utilizado inicialmente neste laboratório |
 | Snapshot      | Ponto de recuperação da VM                            |
 
+---
+
+<br></br>
+
 ## Considerações
 
 A virtualização é uma ferramenta importante para desenvolvimento, testes, estudos de infraestrutura e administração de sistemas.
@@ -819,11 +931,17 @@ Neste projeto, o Oracle VirtualBox será utilizado para transformar um computado
 
 Com os conceitos apresentados, já podemos partir para a instalação do software de virtualização.
 
+---
+
+<br></br>
+
 ## Próximos passos
 
 O próximo documento inicia a parte prática do projeto.
 
 Será realizada a instalação do Oracle VirtualBox no Windows.
+
+<br></br>
 
 Próximo documento:
 
