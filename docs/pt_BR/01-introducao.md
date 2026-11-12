@@ -218,6 +218,10 @@ A quantidade de máquinas virtuais que pode ser executada simultaneamente depend
 
 Quanto mais memória RAM, CPU e armazenamento estiverem disponíveis, maior será a capacidade do host para executar máquinas virtuais.
 
+---
+
+<br></br>
+
 ## Hypervisor
 
 O software responsável por criar e administrar o ambiente de virtualização é chamado de hypervisor.
@@ -264,6 +268,10 @@ Uma máquina virtual possui recursos que são apresentados ao sistema operaciona
 
 Entre eles estão:
 
+---
+
+<br></br>
+
 ### CPU
 
 Podemos definir quantos processadores virtuais serão disponibilizados para a VM.
@@ -275,6 +283,10 @@ CPU:
 2 vCPUs
 ```
 
+---
+
+<br></br>
+
 ### Memória RAM
 
 A quantidade de memória disponível para a máquina virtual também pode ser configurada.
@@ -285,6 +297,10 @@ Neste laboratório:
 RAM:
 2048 MB
 ```
+
+---
+
+<br></br>
 
 ### Armazenamento
 
@@ -298,6 +314,10 @@ Disco:
 ```
 
 Esse disco será utilizado pelo Debian durante a instalação e posteriormente para os demais testes.
+
+---
+
+<br></br>
 
 ### Rede
 
