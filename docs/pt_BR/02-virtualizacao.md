@@ -896,9 +896,11 @@ Pastas compartilhadas
 Snapshots
 ```
 
-A parte conceitual termina aqui.
+A parte conceitual termina aqui, no próximo documento começa a configuração prática do ambiente no Windows.
 
-A partir do próximo documento começa a configuração prática do ambiente no Windows.
+---
+
+<br></br>
 
 ## Resumo
 
