@@ -264,13 +264,15 @@ Debian
 
 Isso é diferente de uma arquitetura em que o hypervisor é executado diretamente sobre o hardware físico.
 
-## Recursos virtuais
+---
+
+<br></br>
+
+## Recursos Virtuais
 
 Uma máquina virtual possui recursos que são apresentados ao sistema operacional guest como hardware virtual.
 
 Entre eles estão:
-
----
 
 <br></br>
 
@@ -285,8 +287,6 @@ CPU:
 2 vCPUs
 ```
 
----
-
 <br></br>
 
 ### Memória RAM
@@ -299,8 +299,6 @@ Neste laboratório:
 RAM:
 2048 MB
 ```
-
----
 
 <br></br>
 
@@ -316,8 +314,6 @@ Disco:
 ```
 
 Esse disco será utilizado pelo Debian durante a instalação e posteriormente para os demais testes.
-
----
 
 <br></br>
 
