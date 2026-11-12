@@ -64,6 +64,10 @@ Computador físico
 
 Cada máquina virtual possui seus próprios recursos virtuais e pode executar um sistema operacional independente.
 
+---
+
+<br></br>
+
 ## Máquina física e máquina virtual
 
 Para entender o funcionamento do VirtualBox, é importante diferenciar alguns conceitos.
