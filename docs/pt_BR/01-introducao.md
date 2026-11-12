@@ -124,6 +124,8 @@ Máquina virtual:
 debian-lab
 ```
 
+<br></br>
+
 A VM possui recursos virtuais, como:
 
 ```text
@@ -246,6 +248,8 @@ Oracle VirtualBox
        v
 Sistema operacional guest
 ```
+
+<br></br>
 
 Neste projeto:
 
@@ -460,6 +464,10 @@ Eles não devem, entretanto, ser tratados como substitutos de uma estratégia de
 
 A utilização de snapshots será apresentada posteriormente no projeto.
 
+---
+
+<br></br>
+
 ## Laboratório e estudos de DevOps
 
 A máquina virtual criada neste projeto poderá servir como base para outros laboratórios.
@@ -485,6 +493,10 @@ Linux
 
 Isso permite utilizar uma única máquina física como ambiente de estudos para diferentes tecnologias.
 
+---
+
+<br></br>
+
 ## Virtualização e ambientes de teste
 
 Uma das principais vantagens da virtualização é permitir a criação de ambientes isolados.
@@ -505,6 +517,10 @@ Windows
 ```
 
 Esse modelo é bastante útil durante o aprendizado porque permite experimentar configurações diferentes e reconstruir o ambiente quando necessário.
+
+---
+
+<br></br>
 
 ## O que será construído neste projeto
 
@@ -545,6 +561,10 @@ Windows
 ```
 
 Ao final, teremos um laboratório funcional pronto para receber novos estudos.
+
+---
+
+<br></br>
 
 ## Estrutura da documentação
 
