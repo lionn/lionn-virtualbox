@@ -92,6 +92,8 @@ O host fornece os recursos físicos utilizados pelas máquinas virtuais, como:
 * Dispositivos USB
 * Outros recursos de hardware
 
+<br></br>
+
 ### Guest
 
 Guest é o sistema operacional executado dentro da máquina virtual.
