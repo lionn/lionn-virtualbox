@@ -280,7 +280,7 @@ Entre eles estão:
 
 ### CPU
 
-Podemos definir quantos processadores virtuais serão disponibilizados para a VM.
+- Podemos definir quantos processadores virtuais serão disponibilizados para a VM.
 
 Neste laboratório:
 
@@ -293,7 +293,7 @@ CPU:
 
 ### Memória RAM
 
-A quantidade de memória disponível para a máquina virtual também pode ser configurada.
+- A quantidade de memória disponível para a máquina virtual também pode ser configurada.
 
 Neste laboratório:
 
@@ -306,7 +306,7 @@ RAM:
 
 ### Armazenamento
 
-A máquina virtual utilizará um disco virtual.
+- A máquina virtual utilizará um disco virtual.
 
 Neste laboratório:
 
@@ -321,7 +321,7 @@ Esse disco será utilizado pelo Debian durante a instalação e posteriormente p
 
 ### Rede
 
-O VirtualBox fornece interfaces de rede virtuais que permitem conectar a máquina virtual ao host, a outras máquinas virtuais ou à rede externa, dependendo do modo de rede configurado.
+- O VirtualBox fornece interfaces de rede virtuais que permitem conectar a máquina virtual ao host, a outras máquinas virtuais ou à rede externa, dependendo do modo de rede configurado.
 
 Inicialmente será utilizado:
 
